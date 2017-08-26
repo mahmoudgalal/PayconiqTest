@@ -5,8 +5,8 @@ The App uses a very simple MVVM model without binding
 <br/>
 <b>Components nd thirdparty libs used:</b><br/>
 - Realm
-<br/>-Glide<br/>
--Retrofit<br/>
--Google Gson<br/>
+<br/>- Glide<br/>
+- Retrofit<br/>
+- Google Gson<br/>
 
 <a href="http://uploads.im/d8Sgw.png"><img src="http://sm.uploads.im/t/d8Sgw.png" border="0" /></a>
