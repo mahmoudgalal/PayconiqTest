@@ -4,8 +4,8 @@ A simple Demo showing how to load all github repos for a specific user using pag
 The App uses a very simple MVVM model without binding
 <br/>
 <b>Components nd thirdparty libs used:</b><br/>
-- Realm
-<br/>- Glide<br/>
+- Realm<br/>
+- Glide<br/>
 - Retrofit<br/>
 - Google Gson<br/>
 
