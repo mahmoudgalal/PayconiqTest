@@ -27,6 +27,7 @@ import retrofit2.Response;
 public class ReposViewModel implements BaseViewModel<Repo>,RealmChangeListener<RealmResults<Repo>> {
     private static final String TAG = ReposViewModel.class.getName();
     private static final String LAST_FETCHED_PAGE_INDEX = "com.mgalal.payconiq.payconiqtest.LAST_FETCHED_PAGE_INDEX";
+    private static final String DATA_FULLY_LOADED_KEY = "com.mgalal.payconiq.payconiqtest.DATA_FULLY_LOADED_KEY";
     private Realm mRealm;
     private int currentPage = 0;
     private OnDataLoadedListener<Repo> listener;
@@ -35,7 +36,7 @@ public class ReposViewModel implements BaseViewModel<Repo>,RealmChangeListener<R
     private AtomicBoolean operationRunning;
     public static final int ITEMS_PER_PAGE = 15;
     private boolean started =  false;
-    private boolean dataFullyLoaded =false;
+    private boolean dataFullyLoaded ;
     private  Call<List<Repo>> call;
 
 
@@ -52,6 +53,8 @@ public class ReposViewModel implements BaseViewModel<Repo>,RealmChangeListener<R
         operationRunning =  new AtomicBoolean(false);
         currentPage = context.getSharedPreferences(Utils.SHARED_PREF_FN,0).
                 getInt(LAST_FETCHED_PAGE_INDEX,0);
+        dataFullyLoaded = context.getSharedPreferences(Utils.SHARED_PREF_FN,0).
+                getBoolean(DATA_FULLY_LOADED_KEY,false);
     }
     @Override
     public void onStart() {
@@ -70,6 +73,8 @@ public class ReposViewModel implements BaseViewModel<Repo>,RealmChangeListener<R
         //storing last fetched page for later use
         context.getSharedPreferences(Utils.SHARED_PREF_FN,0).edit().
                 putInt(LAST_FETCHED_PAGE_INDEX,currentPage).commit();
+        context.getSharedPreferences(Utils.SHARED_PREF_FN,0).edit().
+                putBoolean(DATA_FULLY_LOADED_KEY,dataFullyLoaded).commit();
         started = false;
         if(call != null && !call.isCanceled())
             call.cancel();

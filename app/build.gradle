@@ -36,6 +36,6 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
     //Google Gson
     compile 'com.google.code.gson:gson:2.8.1'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0-RC1'
+
     testCompile 'junit:junit:4.12'
 }

@@ -99,6 +99,9 @@ public class MainActivity extends AppCompatActivity implements OnDataLoadedListe
 
     @Override
     protected void onDestroy() {
+        //allow peacefull close for realm,as it is touched from recycler scroll
+        if(reposRecycler != null)
+            reposRecycler.setAdapter(null);
         super.onDestroy();
         viewModel.onStop();
     }
